@@ -15,7 +15,7 @@ export default CardData;
 
 const styles = StyleSheet.create({
   card: {
-    width: '100%',
+     width: '100%',
     backgroundColor: '#f8f8f8',
     padding: 10,
     margin: 10,
@@ -34,5 +34,5 @@ const styles = StyleSheet.create({
   texto: {
     fontSize: 16,
     color: '#333',
-  },
+  }
 });

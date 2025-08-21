@@ -1,4 +1,5 @@
 import { StyleSheet, View, TextInput } from 'react-native';
+
 export default function InputText ({maxLength, placeholder, keyboardType, onChangeText }) {
     return (
         <View style={styles.container}>

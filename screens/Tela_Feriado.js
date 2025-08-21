@@ -30,37 +30,29 @@ export default function Tela_Feriado() {
     return (
         <View style={styles.container}>
           <InputText 
-          maxLength={4}
-          placeholder="Digite o ano"
-          keyboardType="numeric"
-            onChangeText={
-              (ano)=> verificarFeriado(ano.trim())
-            } 
+            maxLength={4}
+            placeholder="Digite o ano"
+            keyboardType="numeric"
+            onChangeText={(ano)=> verificarFeriado(ano.trim())} 
           />
-
-        <FlashList
-          data={l_f}
-          renderItem={({ item, index }) =>            
+          {l_f.map((item, index) => (
             <CardData
               key={index}
               Data={item.date}
               Nome={item.name}
               Tipo={item.type}
             />
-          }
-          estimatedItemSize={200}
-        />
-        
+          ))}
         </View>
       );
     }
    
   const styles = StyleSheet.create({
     container: {
-      padding: 20,
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
+        padding: 20,
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
       justifyContent: 'flex-start',
     }
   });
