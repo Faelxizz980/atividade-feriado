@@ -1,8 +1,8 @@
 import * as config from './config.js';
 
-export const getDDD = async (ddd) => {
+export const getcep = async (cep) =>{
 
-    const url = `${config.url_api()}/ddd/v1/${ddd}`;
+    const url = `${config.url_api()}/cep/v1/${cep}`;
     const options = {
         method: 'GET',
         headers: {

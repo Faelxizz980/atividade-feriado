@@ -18,7 +18,9 @@ export default function InputText ({maxLength, placeholder, keyboardType, onChan
     input:{ 
       height: 40, 
       width: '100%',
-      borderColor: 'gray', 
+      borderColor: '#ebe8e8',
+      placeholderTextColor: '#ebe8e8',
+      color: '#ebe8e8', 
       borderWidth: 1, 
       borderRadius: 5,
       marginTop: 10,

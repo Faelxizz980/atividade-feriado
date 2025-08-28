@@ -1,18 +1,20 @@
 import { StyleSheet, View, TextInput } from 'react-native';
 
-export const  InputDDD = ({ onChangeText }) => {
+export const InputBank = ({ onChangeText }) => {
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        maxLength={2}
-        placeholder="Digite o DDD"
-        keyboardType="numeric"
+        maxLength={20}
+        placeholder="Digite o Nome do Banco"
+        keyboardType="default"
         onChangeText={onChangeText}
       />
     </View>
   );
 }
+
+export default InputBank;
 
 const styles = StyleSheet.create({
   input:{ 
@@ -27,5 +29,3 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   }
 });
-
-export default  InputDDD ;

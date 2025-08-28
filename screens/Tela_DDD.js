@@ -2,43 +2,47 @@ import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { useState } from 'react';
 import InputDDD from '../components/InputDDD.js';
 import CardDDD from '../components/cardDDD.js';
-import * as dddService from '../services/ddd.js';
+
+import * as ddd from '../services/ddd.js';
 
 
 export default function Tela_DDD() {
-    const [cities, setCities] = useState([])
-    const [uf, setUf] = useState("")
+    
+    const [cities, setCities] = useState([]);
+    const [uf, setUf] = useState("");
 
-
-    const verificarDDD = (ddd) => {
-        if (!ddd || ddd.length !== 2) { // Verifica se o DDD tem o formato correto (2 dígitos)
+    const verificarDDD = (ddds) => {
+        if (!ddds || ddds.length !== 2) { // Verifica se o DDD tem 2 dígitos
+            setCities([]);
+            setUf("");
             return;
         }
 
         // Consulta a API de DDDs
-        dddService.getDDD(value)  // Supondo que você tenha uma função que consulta a API de DDDs
+        ddd.getDDD(ddds)  
             .then((list_Cities) => {
-                setCities(list_Cities.cities || []); // Assume que a resposta contém uma lista de cidades
-                setUf(list_Cities[0].state); // Assume que a primeira cidade define o estado
+                // Ajuste de acordo com o formato que a API retorna
+                setCities(list_Cities.cities || []);
+                setUf(list_Cities.state || "");
             })
             .catch((error) => {
                 console.error('Erro ao buscar DDD:', error);
                 setCities([]);
                 setUf("");
             });
-    }
+    };
 
     return (
         <View style={styles.container}>
             <InputDDD 
                 onChangeText={(ddd) => verificarDDD(ddd.trim())} 
             />
-             <Text style={styles.titulo}>CIDADES DE 
-                <Text style={{color: '#6edd13'}}> {uf}</Text>
+            <Text style={styles.titulo}>
+                CIDADES DE 
+                <Text style={{ color: '#6edd13' }}> {uf}</Text>
             </Text>
-            <ScrollView style={styles.scroll}  >
-                {
-                cities.map((city, index) => (
+            <ScrollView style={styles.scroll}>
+                {cities.map((city, index) => (
                     <CardDDD
                         key={index}
                         city={city}
@@ -48,28 +52,25 @@ export default function Tela_DDD() {
             </ScrollView>
         </View>
     );
-        
-
 }
-
-
 
 const styles = StyleSheet.create({
     container:{
-        display: 'flex', 
+        flex: 1, 
         justifyContent: 'flex-start', 
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor: "#0d1a63" // só um exemplo
     },
     titulo:{
-        color: 'white', 
+        color: '#f5f3f3', 
         fontWeight: 'bold', 
-        fontSize: '20px', 
-        marginTop: '1rem'
+        fontSize: 20,       // número, sem "px"
+        marginTop: 16       // número, sem "rem"
     },
     scroll:{
         width: '100%',
-        height: '100vh', 
-        padding: '10px', 
-        borderRadius: '10px'
+        flex: 1,            // em vez de "100vh"
+        padding: 10, 
+        borderRadius: 10
     }
-})
+});

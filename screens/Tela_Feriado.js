@@ -1,58 +1,68 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert, ScrollView } from 'react-native';
 import InputText from '../components/InputText.js';
 import CardData from '../components/cardData.js';
-import { FlashList } from "@shopify/flash-list";
-
-import * as feriados from '../services/feriados.js'
+import * as feriados from '../services/feriados.js';
 import { useState } from 'react';
 
 export default function Tela_Feriado() {
+  const [l_f, setFeriados] = useState([]);
 
-    const [l_f, setFeriados] = useState([]);
+  const verificarFeriado = (ano) => {
+    if (!ano || ano.length !== 4) {
+      return;
+    }
 
-    const verificarFeriado = (ano) => {
-      if (!ano || ano.length !== 4) { // Verifica se a data tem o formato correto (YYYY-MM-DD)
-        return;
-      }
-  
-      // Consulta a API de feriados nacionais
-      feriados.getFeriados(ano)  // Supondo que você tenha uma função que consulta a API de feriados
+    const anoNum = parseInt(ano, 10);
+    const anoAtual = new Date().getFullYear();
+
+    if (isNaN(anoNum) || anoNum < 1700 || anoNum > anoAtual) {
+      Alert.alert("Ano inválido", `Digite um ano entre 1700 e ${anoAtual}.`);
+      setFeriados([]);
+      return;
+    }
+
+    feriados.getFeriados(anoNum)
       .then((list_Feriados) => {
-        setFeriados(list_Feriados);      
-        console.log(l_f);  
+        setFeriados(list_Feriados);
       })
       .catch((error) => {
         console.error('Erro ao buscar feriado:', error);
-        Alert.alert('Erro', 'Não foi possível consultar o feriado. Tente novamente.');
+        Alert.alert('Erro', 'Não foi possível consultar os feriados. Tente novamente.');
       });
-    }
-  
-    return (
-        <View style={styles.container}>
-          <InputText 
-            maxLength={4}
-            placeholder="Digite o ano"
-            keyboardType="numeric"
-            onChangeText={(ano)=> verificarFeriado(ano.trim())} 
+  };
+
+  return (
+    <View style={styles.container}>
+      <InputText
+        maxLength={4}
+        placeholder="Digite o ano"
+        keyboardType="numeric"
+        onChangeText={(ano) => verificarFeriado(ano.trim())}
+      />
+      <ScrollView style={styles.scroll}>
+        {l_f.map((item, index) => (
+          <CardData
+            key={index}
+            Data={item.date}
+            Nome={item.name}
+            Tipo={item.type}
           />
-          {l_f.map((item, index) => (
-            <CardData
-              key={index}
-              Data={item.date}
-              Nome={item.name}
-              Tipo={item.type}
-            />
-          ))}
-        </View>
-      );
-    }
-   
-  const styles = StyleSheet.create({
-    container: {
-        padding: 20,
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-      justifyContent: 'flex-start',
-    }
-  });
+        ))}
+      </ScrollView>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+    flex: 1,
+    backgroundColor: '#0d1a63',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  scroll: {
+    marginTop: 16,
+    width: "100%",
+  }
+});

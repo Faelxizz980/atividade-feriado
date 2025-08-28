@@ -1,17 +1,19 @@
 import { StyleSheet, View, Text } from 'react-native';
 
-const CardData = ({ Data, Nome,Tipo }) => {
-  console.log(Nome)
+export const CardCep = ({ cep, address }) => {
   return (
     <View style={styles.card}>
-      <Text style={styles.texto}>Data: {Data}</Text>
-      <Text style={styles.texto}>Nome: {Nome}</Text>
-      <Text style={styles.texto}>Tipo: {Tipo}</Text>
+      <Text style={styles.texto}>Cep: {address.cep}</Text>
+      <Text style={styles.texto}>Estado: {address.state}</Text>
+      <Text style={styles.texto}>Cidade: {address.city}</Text>
+      <Text style={styles.texto}>Bairro: {address.neighborhood}</Text>
+      <Text style={styles.texto}>Rua: {address.street}</Text>
+      <Text style={styles.texto}>Serviço: {address.service}</Text>
     </View>
   );
-}
+};
 
-export default CardData;
+export default CardCep;
 
 const styles = StyleSheet.create({
   card: {
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 5,
     shadowColor: '#097ec2',
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between',
     shadowOffset: {
       width: 0,

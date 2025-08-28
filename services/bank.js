@@ -1,10 +1,10 @@
-import * as config from './config.js';
+import * as config from '../config.js';
 
-export const getDDD = async (ddd) => {
+export const getBank = async () => {
 
-    const url = `${config.url_api()}/ddd/v1/${ddd}`;
+    const url   = `${config.url_api()}/feriados/v1/`
     const options = {
-        method: 'GET',
+        method : 'GET',
         headers: {
             accept: 'application/json'
         }
@@ -19,7 +19,8 @@ export const getDDD = async (ddd) => {
         
         return await response.json();
     } catch (error) {
-        console.error('Error fetching holiday data:', error);
+        console.error('Error fetching Data data:', error);
         throw error;
     }
+
 }

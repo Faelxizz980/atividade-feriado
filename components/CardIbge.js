@@ -1,28 +1,26 @@
 import { StyleSheet, View, Text } from 'react-native';
 
-const CardData = ({ Data, Nome,Tipo }) => {
-  console.log(Nome)
+export const CardIbge = ({ Nome, Codigo_Ibge }) => {
   return (
     <View style={styles.card}>
-      <Text style={styles.texto}>Data: {Data}</Text>
       <Text style={styles.texto}>Nome: {Nome}</Text>
-      <Text style={styles.texto}>Tipo: {Tipo}</Text>
+      <Text style={styles.texto}>Código IBGE: {Codigo_Ibge}</Text>
     </View>
   );
-}
+};
 
-export default CardData;
+export default CardIbge;
 
 const styles = StyleSheet.create({
   card: {
-     width: '100%',
+    width: '100%',
     backgroundColor: '#30539e',
     padding: 10,
-    margin: 10,
+    marginBottom: 10,
     borderRadius: 5,
     shadowColor: '#097ec2',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -34,5 +32,5 @@ const styles = StyleSheet.create({
   texto: {
     fontSize: 16,
     color: '#f0eded',
-  }
+  },
 });
