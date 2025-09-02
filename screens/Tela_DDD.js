@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { useState } from 'react';
 import InputDDD from '../components/InputDDD.js';
-import CardDDD from '../components/cardDDD.js';
+import {CardDDD} from '../components/Cards.jsx';
 
 import * as ddd from '../services/ddd.js';
 
@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
         flex: 1, 
         justifyContent: 'flex-start', 
         alignItems: "center",
-        backgroundColor: "#0d1a63" // só um exemplo
     },
     titulo:{
         color: '#f5f3f3', 

@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { useState } from 'react';
 import InputCep from "../components/inputCep";
-import CardCep from "../components/cardCep";
+import {CardCep} from "../components/Cards.jsx";
 
 import * as cep from '../services/arroz.js';
 
@@ -44,7 +44,10 @@ export default function Tela_Cep() {
                 {address && (
                     <CardCep
                         cep={cepValue}
-                        address={address}
+                        estado={address.state}
+                        city={address.city}
+                        bairro={address.neighborhood}
+                        rua={address.street}
                     />
                 )}
             </ScrollView>
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
         flex: 1, 
         justifyContent: 'flex-start', 
         alignItems: "center",
-        backgroundColor: "#0d1a63" // só um exemplo
+        backgroundColor : "#0c2166ff"
     },
     titulo:{
         color: '#f5f3f3', 

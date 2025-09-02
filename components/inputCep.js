@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     borderColor: '#ebe8e8', 
     placeholderTextColor: '#ebe8e8', 
     color: '#ebe8e8',
+    backgroundColor :'#133092ff',
     borderWidth: 1, 
     borderRadius: 5,
     marginTop: 10,
