@@ -2,7 +2,7 @@ import { StyleSheet, View, Text } from 'react-native';
 
 export const CardCep = ({ cep, estado, city, bairro, rua }) => {
   return (
-    <View style={styles.cardCep}>
+    <View style={styles.card}>
       <Text style={styles.texto}>Cep: {cep}</Text>
       <Text style={styles.texto}>Estado: {estado}</Text>
       <Text style={styles.texto}>Cidade: {city}</Text>
@@ -31,25 +31,47 @@ export const CardIbge = ({ Nome, Codigo_Ibge }) => {
   );
 };
 
-const CardData = ({ Data, Nome,Tipo }) => {
-  console.log(Nome)
-  return (
+export const CardCnpj = ({uf , cep , cnpj, razao_social, nome_fantasia}) =>{
+  return(
     <View style={styles.card}>
-      <Text style={styles.texto}>Data: {Data}</Text>
-      <Text style={styles.texto}>Nome: {Nome}</Text>
-      <Text style={styles.texto}>Tipo: {Tipo}</Text>
+      <Text style={styles.texto}>CNPJ: {cnpj}</Text>
+      <Text style={styles.texto}>Razão Social: {razao_social}</Text>
+      <Text style={styles.texto}>Nome Fantasia: {nome_fantasia}</Text>
+      <Text style={styles.texto}>UF: {uf}</Text>
+      <Text style={styles.texto}>CEP: {cep}</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-    cardCep:{
-        width: 200,
-        alignItems: 'center'
-    },
-    texto:{
-        color: '#fff'
-    }
-})
 
-export default {CardCep, CardDDD, CardData, CardIbge}
+
+
+const styles = StyleSheet.create({
+  View:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  card: {
+    width: 250,
+    backgroundColor: '#797a7e',
+    borderRadius: 16,
+    padding: 20,
+    marginVertical: 12,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5, // Para sombra no Android
+  },
+  texto: {
+    color: '#fff',
+    fontSize: 18,
+    marginBottom: 8,
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+});
+
+export default {CardCep, CardDDD, CardIbge, CardCnpj}

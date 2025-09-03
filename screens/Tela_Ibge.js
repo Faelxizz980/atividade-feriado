@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 import { useState } from 'react';
 import Inputibge from '../components/InputIbge.js';
-import CardIbge from '../components/CardIbge.js';
+import { CardIbge } from '../components/Cards.jsx';
 
 import * as ibge from '../services/Ibge.js';
 
@@ -53,10 +53,11 @@ export default function Tela_Ibge() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    flex: 1, 
+        justifyContent: 'flex-start', 
+        alignItems: "center",
+        backgroundColor: '#1e1e1e',
+        padding: 20
   },
   loading: {
     color: '#fff',

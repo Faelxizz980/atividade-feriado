@@ -59,16 +59,18 @@ const styles = StyleSheet.create({
         flex: 1, 
         justifyContent: 'flex-start', 
         alignItems: "center",
+        backgroundColor: '#1e1e1e',
+        padding: 20
     },
     titulo:{
         color: '#f5f3f3', 
         fontWeight: 'bold', 
-        fontSize: 20,       // número, sem "px"
-        marginTop: 16       // número, sem "rem"
+        fontSize: 20,       
+        marginTop: 16       
     },
     scroll:{
         width: '100%',
-        flex: 1,            // em vez de "100vh"
+        flex: 1,            
         padding: 10, 
         borderRadius: 10
     }

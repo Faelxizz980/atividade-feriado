@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
         flex: 1, 
         justifyContent: 'flex-start', 
         alignItems: "center",
-        backgroundColor : "#0c2166ff"
+        backgroundColor: '#1e1e1e',
+        padding: 20
     },
     titulo:{
         color: '#f5f3f3', 

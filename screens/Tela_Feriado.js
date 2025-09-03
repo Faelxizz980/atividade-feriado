@@ -1,6 +1,6 @@
 import { StyleSheet, View, Alert, ScrollView } from 'react-native';
 import InputText from '../components/InputText.js';
-import CardData from '../components/cardData.js';
+import CardData from '../components/teste.js';
 import * as feriados from '../services/feriados.js';
 import { useState } from 'react';
 
@@ -55,10 +55,11 @@ export default function Tela_Feriado() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+   flex: 1, 
+        justifyContent: 'flex-start', 
+        alignItems: "center",
+        backgroundColor: '#1e1e1e',
+        padding: 20
   },
   scroll: {
     marginTop: 16,
