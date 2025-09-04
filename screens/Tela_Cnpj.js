@@ -15,7 +15,6 @@ export default function Tela_Cnpj(){
             setCnpjValue("");
             return;
         }
-
         cnpj.getcnpj(cnpjInput)  
             .then((data) => {
                 console.log("Dados retornados da API:", data);
